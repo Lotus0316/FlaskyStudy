@@ -4,8 +4,8 @@
 
 - Ch2 应用基本结构
 
-1. [关于装饰器的运作原理](studynote/@装饰器的作用 (2023_3_30 14_27_05).html)
-2. [什么是虚拟环境，如何构建并运行虚拟环境](studynote/Enter venv.md)
+1. [关于装饰器的运作原理](studynote/decorator.html)
+2. [什么是虚拟环境，如何构建并运行虚拟环境](studynote/Enter_venv.md)
 3. [如何将Flask应用程序部署到本地服务器](studynote/flask_run.md)
 4. 什么是“应用”以及初始化的方法
 5. 什么是路由，以及定义视图函数
