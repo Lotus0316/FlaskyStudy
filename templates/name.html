@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+User
+{% endblock %}
+
+{% block page_content %}
+<h1>Hello, {{ name|capitalize }}!</h1>
+<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
+<p>That was {{ moment(current_time).fromNow(refresh=True) }}.</p>
+{% endblock %}
+<!--千万别漏掉两端的%符号-->
+
+{% block head %}
+<!--在标题头中定义标签小图标-->
+<!--这也是一个url_for()函数的应用-->
+<!--但是这个图标好像不应该定义在base模板里-->
+{{ super() }}
+{% if name == "alice" %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='piggy-bank.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='piggy-bank.ico') }}" type="image/x-icon">
+{% else %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='home.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='home.ico') }}" type="image/x-icon">
+{% endif %}
+<!--这里用了一个if控制，但是-->
+{% endblock %}
