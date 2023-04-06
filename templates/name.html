@@ -1,11 +1,15 @@
 {% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
-User
+Hello {% if name %}{{ name }}{% else %}World{% endif %}
 {% endblock %}
 
 {% block page_content %}
-<h1>Hello, {{ name|capitalize }}!</h1>
+<h1>Hello, {% if name %}{{ name|capitalize }}{% else %}World{% endif %}!</h1>
+{% if form %}
+{{ wtf.quick_form(form) }}<!--这里应该是传入form的时候调用了一下wtf函数来渲染-->
+{% endif %}
 <p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
 <p>That was {{ moment(current_time).fromNow(refresh=True) }}.</p>
 {% endblock %}
