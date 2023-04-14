@@ -40,5 +40,5 @@ def page_not_found(e):
     return render_template('404.html'),404
 # 这里参数通常为e（Exception）,其可以访问该异常对象，同时别忘了return404状态码
 
-if __name__=="__main__":# 这个__main__是这个py文档的__main__，与Flask(__main__)无关
+if __name__=="__main__":
     app.run()
