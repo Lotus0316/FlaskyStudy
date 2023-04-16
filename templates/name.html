@@ -2,11 +2,19 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
-Hello {% if name %}{{ name }}{% else %}World{% endif %}
+Hello {% if name %}{{ name }}{% endif %}
+{% endblock %}
+
+{% block extra_navbar %}<!--额外的导航栏，且需要表单认证-->
+{% if name == "alice" %}
+<li><a href="https://www.polarsteps.com/HaoYuanYu/4543172-dong-ji?s=62097313-1AC7-4A76-9871-A22A6E5D49C5">Travel</a></li>
+{% elif name == "lotus" %}
+<li><a href="https://www.polarsteps.com/HaoYuanYu/4543172-dong-ji?s=62097313-1AC7-4A76-9871-A22A6E5D49C5">Travel</a></li>
+{% endif %}
 {% endblock %}
 
 {% block page_content %}
-<h1>Hello, {% if name %}{{ name|capitalize }}{% else %}World{% endif %}!</h1>
+<h1>Hello {% if name %}{{ name|capitalize }}{% endif %}!</h1>
 {% if form %}
 {{ wtf.quick_form(form) }}<!--这里应该是传入form的时候调用了一下wtf函数来渲染-->
 {% endif %}
