@@ -7,7 +7,7 @@ Hello {% if name %}{{ name }}{% endif %}
 
 {% block extra_navbar %}<!--额外的导航栏，且需要表单认证-->
 {% if name == "alice" %}
-<li><a href="https://www.polarsteps.com/HaoYuanYu/4543172-dong-ji?s=62097313-1AC7-4A76-9871-A22A6E5D49C5">Travel</a></li>
+<li><a href="/static/piggy-bank.ico">Travel</a></li>
 {% elif name == "lotus" %}
 <li><a href="https://www.polarsteps.com/HaoYuanYu/4543172-dong-ji?s=62097313-1AC7-4A76-9871-A22A6E5D49C5">Travel</a></li>
 {% endif %}
@@ -18,8 +18,17 @@ Hello {% if name %}{{ name }}{% endif %}
 {% if form %}
 {{ wtf.quick_form(form) }}<!--这里应该是传入form的时候调用了一下wtf函数来渲染-->
 {% endif %}
-<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p>
-<p>That was {{ moment(current_time).fromNow(refresh=True) }}.</p>
+{% if name == "alice" %}
+<p>虽然有一瞬间很生气上头</p>
+<p>但是看到你单纯的欠揍</p>
+<p>反而突然就安心了</p>
+{% endif %}
+
+{% if name == "alice" %}
+<p>Locol time is {{ moment(current_time).format('LLL') }}.</p>
+<p>There are {{ moment(current_time).fromNow(refresh=True) }}.</p>
+<p><strong>Getting off work soon!</strong></p>
+{% endif %}
 {% endblock %}
 <!--千万别漏掉两端的%符号-->
 
@@ -29,11 +38,14 @@ Hello {% if name %}{{ name }}{% endif %}
 <!--但是这个图标好像不应该定义在base模板里-->
 {{ super() }}
 {% if name == "alice" %}
-<link rel="shortcut icon" href="{{ url_for('static', filename='piggy-bank.ico') }}" type="image/x-icon">
-<link rel="icon" href="{{ url_for('static', filename='piggy-bank.ico') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ url_for('static', filename='pussy-cat-cartoon-outline-variant.png') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='pussy-cat-cartoon-outline-variant.png') }}" type="image/x-icon">
+{% elif name == "lotus" %}
+<link rel="shortcut icon" href="{{ url_for('static', filename='cat-in-black-silhouette.png') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='cat-in-black-silhouette.png') }}" type="image/x-icon">
 {% else %}
-<link rel="shortcut icon" href="{{ url_for('static', filename='home.ico') }}" type="image/x-icon">
-<link rel="icon" href="{{ url_for('static', filename='home.ico') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ url_for('static', filename='paw.png') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='pawn.png') }}" type="image/x-icon">
 {% endif %}
 <!--这里用了一个if控制，但是-->
 {% endblock %}
