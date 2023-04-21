@@ -19,10 +19,12 @@ class NameForm(FlaskForm):
 
 @app.route('/',methods=['GET','POST']) # 装饰器，把根目录映射到了index()视图函数上，定义了一个静态路由
 def index():
+    zwk = ['zwk']
     form = NameForm()
     if form.validate_on_submit():# 这里是接受“是否为空”的验证器的反馈
         old_name = session.get('name')
         new_name = form.name.data
+
         if old_name is not None and old_name != new_name:
             flash('you have changed your name!')
         session['name'] = new_name 
